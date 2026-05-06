@@ -1,0 +1,854 @@
+{
+  "run_id": "c5b21c2347",
+  "ran_at": "2026-05-06T15:02:19.356089+00:00",
+  "target_count": 20,
+  "pass_count": 4,
+  "fail_count": 16,
+  "pass_rate_pct": 20.0,
+  "model": "stub",
+  "failures_by_assertion": {
+    "subject_under_60_chars": 16
+  },
+  "per_target": [
+    {
+      "company": "Halberd Health",
+      "subject": "Halberd Health \u2014 re: Series B announced 6 weeks ago ($42M)",
+      "passed": true,
+      "results": [
+        {
+          "assertion": "subject_under_60_chars",
+          "passed": true,
+          "detail": "subject is 58 chars (limit 60)"
+        },
+        {
+          "assertion": "subject_mentions_company_or_signal",
+          "passed": true,
+          "detail": "subject mentions company"
+        },
+        {
+          "assertion": "body_anchors_on_real_signal",
+          "passed": true,
+          "detail": "body references anchor keyword 'Series B'"
+        },
+        {
+          "assertion": "body_paragraph_count_in_range",
+          "passed": true,
+          "detail": "body has 5 paragraphs (want 3-7)"
+        },
+        {
+          "assertion": "body_has_exactly_one_cta",
+          "passed": true,
+          "detail": "1 CTA matches (want exactly 1)"
+        },
+        {
+          "assertion": "no_banned_tropes",
+          "passed": true,
+          "detail": "no tropes"
+        },
+        {
+          "assertion": "body_addresses_contact_by_name",
+          "passed": true,
+          "detail": "body addresses 'Dana'"
+        }
+      ]
+    },
+    {
+      "company": "Northwind Payments",
+      "subject": "Northwind Payments \u2014 re: PCI 4.0 deadline March 2026",
+      "passed": true,
+      "results": [
+        {
+          "assertion": "subject_under_60_chars",
+          "passed": true,
+          "detail": "subject is 52 chars (limit 60)"
+        },
+        {
+          "assertion": "subject_mentions_company_or_signal",
+          "passed": true,
+          "detail": "subject mentions company"
+        },
+        {
+          "assertion": "body_anchors_on_real_signal",
+          "passed": true,
+          "detail": "body references anchor keyword 'PCI'"
+        },
+        {
+          "assertion": "body_paragraph_count_in_range",
+          "passed": true,
+          "detail": "body has 5 paragraphs (want 3-7)"
+        },
+        {
+          "assertion": "body_has_exactly_one_cta",
+          "passed": true,
+          "detail": "1 CTA matches (want exactly 1)"
+        },
+        {
+          "assertion": "no_banned_tropes",
+          "passed": true,
+          "detail": "no tropes"
+        },
+        {
+          "assertion": "body_addresses_contact_by_name",
+          "passed": true,
+          "detail": "body addresses 'Marcus'"
+        }
+      ]
+    },
+    {
+      "company": "Atlas Defense Robotics",
+      "subject": "Atlas Defense Robotics \u2014 re: DoD contract awarded last month \u2014 CMMC L",
+      "passed": false,
+      "results": [
+        {
+          "assertion": "subject_under_60_chars",
+          "passed": false,
+          "detail": "subject is 69 chars (limit 60)"
+        },
+        {
+          "assertion": "subject_mentions_company_or_signal",
+          "passed": true,
+          "detail": "subject mentions company"
+        },
+        {
+          "assertion": "body_anchors_on_real_signal",
+          "passed": true,
+          "detail": "body references anchor keyword 'DoD'"
+        },
+        {
+          "assertion": "body_paragraph_count_in_range",
+          "passed": true,
+          "detail": "body has 5 paragraphs (want 3-7)"
+        },
+        {
+          "assertion": "body_has_exactly_one_cta",
+          "passed": true,
+          "detail": "1 CTA matches (want exactly 1)"
+        },
+        {
+          "assertion": "no_banned_tropes",
+          "passed": true,
+          "detail": "no tropes"
+        },
+        {
+          "assertion": "body_addresses_contact_by_name",
+          "passed": true,
+          "detail": "body addresses 'Linnea'"
+        }
+      ]
+    },
+    {
+      "company": "Brightpath Insurance",
+      "subject": "Brightpath Insurance \u2014 re: Posted RFP for managed XDR last week",
+      "passed": false,
+      "results": [
+        {
+          "assertion": "subject_under_60_chars",
+          "passed": false,
+          "detail": "subject is 63 chars (limit 60)"
+        },
+        {
+          "assertion": "subject_mentions_company_or_signal",
+          "passed": true,
+          "detail": "subject mentions company"
+        },
+        {
+          "assertion": "body_anchors_on_real_signal",
+          "passed": true,
+          "detail": "body references anchor keyword 'RFP'"
+        },
+        {
+          "assertion": "body_paragraph_count_in_range",
+          "passed": true,
+          "detail": "body has 5 paragraphs (want 3-7)"
+        },
+        {
+          "assertion": "body_has_exactly_one_cta",
+          "passed": true,
+          "detail": "1 CTA matches (want exactly 1)"
+        },
+        {
+          "assertion": "no_banned_tropes",
+          "passed": true,
+          "detail": "no tropes"
+        },
+        {
+          "assertion": "body_addresses_contact_by_name",
+          "passed": true,
+          "detail": "body addresses 'Priya'"
+        }
+      ]
+    },
+    {
+      "company": "Sentry Manufacturing",
+      "subject": "Sentry Manufacturing \u2014 re: Quoted in industry article about OT/IT c",
+      "passed": false,
+      "results": [
+        {
+          "assertion": "subject_under_60_chars",
+          "passed": false,
+          "detail": "subject is 67 chars (limit 60)"
+        },
+        {
+          "assertion": "subject_mentions_company_or_signal",
+          "passed": true,
+          "detail": "subject mentions company"
+        },
+        {
+          "assertion": "body_anchors_on_real_signal",
+          "passed": true,
+          "detail": "body references anchor keyword 'OT/IT'"
+        },
+        {
+          "assertion": "body_paragraph_count_in_range",
+          "passed": true,
+          "detail": "body has 5 paragraphs (want 3-7)"
+        },
+        {
+          "assertion": "body_has_exactly_one_cta",
+          "passed": true,
+          "detail": "1 CTA matches (want exactly 1)"
+        },
+        {
+          "assertion": "no_banned_tropes",
+          "passed": true,
+          "detail": "no tropes"
+        },
+        {
+          "assertion": "body_addresses_contact_by_name",
+          "passed": true,
+          "detail": "body addresses 'Felix'"
+        }
+      ]
+    },
+    {
+      "company": "Riverstone Capital",
+      "subject": "Riverstone Capital \u2014 re: SEC cyber disclosure rule compliance dea",
+      "passed": false,
+      "results": [
+        {
+          "assertion": "subject_under_60_chars",
+          "passed": false,
+          "detail": "subject is 65 chars (limit 60)"
+        },
+        {
+          "assertion": "subject_mentions_company_or_signal",
+          "passed": true,
+          "detail": "subject mentions company"
+        },
+        {
+          "assertion": "body_anchors_on_real_signal",
+          "passed": true,
+          "detail": "body references anchor keyword 'SEC'"
+        },
+        {
+          "assertion": "body_paragraph_count_in_range",
+          "passed": true,
+          "detail": "body has 5 paragraphs (want 3-7)"
+        },
+        {
+          "assertion": "body_has_exactly_one_cta",
+          "passed": true,
+          "detail": "1 CTA matches (want exactly 1)"
+        },
+        {
+          "assertion": "no_banned_tropes",
+          "passed": true,
+          "detail": "no tropes"
+        },
+        {
+          "assertion": "body_addresses_contact_by_name",
+          "passed": true,
+          "detail": "body addresses 'Janelle'"
+        }
+      ]
+    },
+    {
+      "company": "Cascade Genomics",
+      "subject": "Cascade Genomics \u2014 re: Announced FDA submission for novel gene ",
+      "passed": false,
+      "results": [
+        {
+          "assertion": "subject_under_60_chars",
+          "passed": false,
+          "detail": "subject is 63 chars (limit 60)"
+        },
+        {
+          "assertion": "subject_mentions_company_or_signal",
+          "passed": true,
+          "detail": "subject mentions company"
+        },
+        {
+          "assertion": "body_anchors_on_real_signal",
+          "passed": true,
+          "detail": "body references anchor keyword 'FDA'"
+        },
+        {
+          "assertion": "body_paragraph_count_in_range",
+          "passed": true,
+          "detail": "body has 5 paragraphs (want 3-7)"
+        },
+        {
+          "assertion": "body_has_exactly_one_cta",
+          "passed": true,
+          "detail": "1 CTA matches (want exactly 1)"
+        },
+        {
+          "assertion": "no_banned_tropes",
+          "passed": true,
+          "detail": "no tropes"
+        },
+        {
+          "assertion": "body_addresses_contact_by_name",
+          "passed": true,
+          "detail": "body addresses 'Emil'"
+        }
+      ]
+    },
+    {
+      "company": "Quantum Logistics",
+      "subject": "Quantum Logistics \u2014 re: Three port-related ransomware incidents ",
+      "passed": false,
+      "results": [
+        {
+          "assertion": "subject_under_60_chars",
+          "passed": false,
+          "detail": "subject is 64 chars (limit 60)"
+        },
+        {
+          "assertion": "subject_mentions_company_or_signal",
+          "passed": true,
+          "detail": "subject mentions company"
+        },
+        {
+          "assertion": "body_anchors_on_real_signal",
+          "passed": true,
+          "detail": "body references anchor keyword 'ransomware'"
+        },
+        {
+          "assertion": "body_paragraph_count_in_range",
+          "passed": true,
+          "detail": "body has 5 paragraphs (want 3-7)"
+        },
+        {
+          "assertion": "body_has_exactly_one_cta",
+          "passed": true,
+          "detail": "1 CTA matches (want exactly 1)"
+        },
+        {
+          "assertion": "no_banned_tropes",
+          "passed": true,
+          "detail": "no tropes"
+        },
+        {
+          "assertion": "body_addresses_contact_by_name",
+          "passed": true,
+          "detail": "body addresses 'Riya'"
+        }
+      ]
+    },
+    {
+      "company": "Pinnacle Education",
+      "subject": "Pinnacle Education \u2014 re: FERPA modernization rule effective Janua",
+      "passed": false,
+      "results": [
+        {
+          "assertion": "subject_under_60_chars",
+          "passed": false,
+          "detail": "subject is 65 chars (limit 60)"
+        },
+        {
+          "assertion": "subject_mentions_company_or_signal",
+          "passed": true,
+          "detail": "subject mentions company"
+        },
+        {
+          "assertion": "body_anchors_on_real_signal",
+          "passed": true,
+          "detail": "body references anchor keyword 'FERPA'"
+        },
+        {
+          "assertion": "body_paragraph_count_in_range",
+          "passed": true,
+          "detail": "body has 5 paragraphs (want 3-7)"
+        },
+        {
+          "assertion": "body_has_exactly_one_cta",
+          "passed": true,
+          "detail": "1 CTA matches (want exactly 1)"
+        },
+        {
+          "assertion": "no_banned_tropes",
+          "passed": true,
+          "detail": "no tropes"
+        },
+        {
+          "assertion": "body_addresses_contact_by_name",
+          "passed": true,
+          "detail": "body addresses 'Dr.'"
+        }
+      ]
+    },
+    {
+      "company": "Helix Energy",
+      "subject": "Helix Energy \u2014 re: TSA pipeline cybersecurity directive ren",
+      "passed": true,
+      "results": [
+        {
+          "assertion": "subject_under_60_chars",
+          "passed": true,
+          "detail": "subject is 59 chars (limit 60)"
+        },
+        {
+          "assertion": "subject_mentions_company_or_signal",
+          "passed": true,
+          "detail": "subject mentions company"
+        },
+        {
+          "assertion": "body_anchors_on_real_signal",
+          "passed": true,
+          "detail": "body references anchor keyword 'TSA'"
+        },
+        {
+          "assertion": "body_paragraph_count_in_range",
+          "passed": true,
+          "detail": "body has 5 paragraphs (want 3-7)"
+        },
+        {
+          "assertion": "body_has_exactly_one_cta",
+          "passed": true,
+          "detail": "1 CTA matches (want exactly 1)"
+        },
+        {
+          "assertion": "no_banned_tropes",
+          "passed": true,
+          "detail": "no tropes"
+        },
+        {
+          "assertion": "body_addresses_contact_by_name",
+          "passed": true,
+          "detail": "body addresses 'Bjorn'"
+        }
+      ]
+    },
+    {
+      "company": "Lighthouse Telehealth",
+      "subject": "Lighthouse Telehealth \u2014 re: Acquired three regional clinic networks ",
+      "passed": false,
+      "results": [
+        {
+          "assertion": "subject_under_60_chars",
+          "passed": false,
+          "detail": "subject is 68 chars (limit 60)"
+        },
+        {
+          "assertion": "subject_mentions_company_or_signal",
+          "passed": true,
+          "detail": "subject mentions company"
+        },
+        {
+          "assertion": "body_anchors_on_real_signal",
+          "passed": true,
+          "detail": "body references anchor keyword 'acquired'"
+        },
+        {
+          "assertion": "body_paragraph_count_in_range",
+          "passed": true,
+          "detail": "body has 5 paragraphs (want 3-7)"
+        },
+        {
+          "assertion": "body_has_exactly_one_cta",
+          "passed": true,
+          "detail": "1 CTA matches (want exactly 1)"
+        },
+        {
+          "assertion": "no_banned_tropes",
+          "passed": true,
+          "detail": "no tropes"
+        },
+        {
+          "assertion": "body_addresses_contact_by_name",
+          "passed": true,
+          "detail": "body addresses 'Dr.'"
+        }
+      ]
+    },
+    {
+      "company": "Veridian Aerospace",
+      "subject": "Veridian Aerospace \u2014 re: NIST 800-171 compliance certified last m",
+      "passed": false,
+      "results": [
+        {
+          "assertion": "subject_under_60_chars",
+          "passed": false,
+          "detail": "subject is 65 chars (limit 60)"
+        },
+        {
+          "assertion": "subject_mentions_company_or_signal",
+          "passed": true,
+          "detail": "subject mentions company"
+        },
+        {
+          "assertion": "body_anchors_on_real_signal",
+          "passed": true,
+          "detail": "body references anchor keyword 'NIST'"
+        },
+        {
+          "assertion": "body_paragraph_count_in_range",
+          "passed": true,
+          "detail": "body has 5 paragraphs (want 3-7)"
+        },
+        {
+          "assertion": "body_has_exactly_one_cta",
+          "passed": true,
+          "detail": "1 CTA matches (want exactly 1)"
+        },
+        {
+          "assertion": "no_banned_tropes",
+          "passed": true,
+          "detail": "no tropes"
+        },
+        {
+          "assertion": "body_addresses_contact_by_name",
+          "passed": true,
+          "detail": "body addresses 'Captain'"
+        }
+      ]
+    },
+    {
+      "company": "Beacon Casino Group",
+      "subject": "Beacon Casino Group \u2014 re: Hit by ALPHV ransomware variant 8 months",
+      "passed": false,
+      "results": [
+        {
+          "assertion": "subject_under_60_chars",
+          "passed": false,
+          "detail": "subject is 66 chars (limit 60)"
+        },
+        {
+          "assertion": "subject_mentions_company_or_signal",
+          "passed": true,
+          "detail": "subject mentions company"
+        },
+        {
+          "assertion": "body_anchors_on_real_signal",
+          "passed": true,
+          "detail": "body references anchor keyword 'ALPHV'"
+        },
+        {
+          "assertion": "body_paragraph_count_in_range",
+          "passed": true,
+          "detail": "body has 5 paragraphs (want 3-7)"
+        },
+        {
+          "assertion": "body_has_exactly_one_cta",
+          "passed": true,
+          "detail": "1 CTA matches (want exactly 1)"
+        },
+        {
+          "assertion": "no_banned_tropes",
+          "passed": true,
+          "detail": "no tropes"
+        },
+        {
+          "assertion": "body_addresses_contact_by_name",
+          "passed": true,
+          "detail": "body addresses 'Vincent'"
+        }
+      ]
+    },
+    {
+      "company": "Mosaic Retail Holdings",
+      "subject": "Mosaic Retail Holdings \u2014 re: PCI DSS 4.0 attestation deadline this qu",
+      "passed": false,
+      "results": [
+        {
+          "assertion": "subject_under_60_chars",
+          "passed": false,
+          "detail": "subject is 69 chars (limit 60)"
+        },
+        {
+          "assertion": "subject_mentions_company_or_signal",
+          "passed": true,
+          "detail": "subject mentions company"
+        },
+        {
+          "assertion": "body_anchors_on_real_signal",
+          "passed": true,
+          "detail": "body references anchor keyword 'PCI DSS'"
+        },
+        {
+          "assertion": "body_paragraph_count_in_range",
+          "passed": true,
+          "detail": "body has 5 paragraphs (want 3-7)"
+        },
+        {
+          "assertion": "body_has_exactly_one_cta",
+          "passed": true,
+          "detail": "1 CTA matches (want exactly 1)"
+        },
+        {
+          "assertion": "no_banned_tropes",
+          "passed": true,
+          "detail": "no tropes"
+        },
+        {
+          "assertion": "body_addresses_contact_by_name",
+          "passed": true,
+          "detail": "body addresses 'Daria'"
+        }
+      ]
+    },
+    {
+      "company": "Solstice Pharma",
+      "subject": "Solstice Pharma \u2014 re: FDA 21 CFR Part 11 audit findings publis",
+      "passed": false,
+      "results": [
+        {
+          "assertion": "subject_under_60_chars",
+          "passed": false,
+          "detail": "subject is 62 chars (limit 60)"
+        },
+        {
+          "assertion": "subject_mentions_company_or_signal",
+          "passed": true,
+          "detail": "subject mentions company"
+        },
+        {
+          "assertion": "body_anchors_on_real_signal",
+          "passed": true,
+          "detail": "body references anchor keyword '21 CFR'"
+        },
+        {
+          "assertion": "body_paragraph_count_in_range",
+          "passed": true,
+          "detail": "body has 5 paragraphs (want 3-7)"
+        },
+        {
+          "assertion": "body_has_exactly_one_cta",
+          "passed": true,
+          "detail": "1 CTA matches (want exactly 1)"
+        },
+        {
+          "assertion": "no_banned_tropes",
+          "passed": true,
+          "detail": "no tropes"
+        },
+        {
+          "assertion": "body_addresses_contact_by_name",
+          "passed": true,
+          "detail": "body addresses 'Dr.'"
+        }
+      ]
+    },
+    {
+      "company": "Ironclad Mortgage",
+      "subject": "Ironclad Mortgage \u2014 re: FFIEC examination scheduled Q2",
+      "passed": true,
+      "results": [
+        {
+          "assertion": "subject_under_60_chars",
+          "passed": true,
+          "detail": "subject is 54 chars (limit 60)"
+        },
+        {
+          "assertion": "subject_mentions_company_or_signal",
+          "passed": true,
+          "detail": "subject mentions company"
+        },
+        {
+          "assertion": "body_anchors_on_real_signal",
+          "passed": true,
+          "detail": "body references anchor keyword 'FFIEC'"
+        },
+        {
+          "assertion": "body_paragraph_count_in_range",
+          "passed": true,
+          "detail": "body has 5 paragraphs (want 3-7)"
+        },
+        {
+          "assertion": "body_has_exactly_one_cta",
+          "passed": true,
+          "detail": "1 CTA matches (want exactly 1)"
+        },
+        {
+          "assertion": "no_banned_tropes",
+          "passed": true,
+          "detail": "no tropes"
+        },
+        {
+          "assertion": "body_addresses_contact_by_name",
+          "passed": true,
+          "detail": "body addresses 'Theresa'"
+        }
+      ]
+    },
+    {
+      "company": "Polaris Maritime",
+      "subject": "Polaris Maritime \u2014 re: IMO 2026 cyber risk management standard ",
+      "passed": false,
+      "results": [
+        {
+          "assertion": "subject_under_60_chars",
+          "passed": false,
+          "detail": "subject is 63 chars (limit 60)"
+        },
+        {
+          "assertion": "subject_mentions_company_or_signal",
+          "passed": true,
+          "detail": "subject mentions company"
+        },
+        {
+          "assertion": "body_anchors_on_real_signal",
+          "passed": true,
+          "detail": "body references anchor keyword 'IMO'"
+        },
+        {
+          "assertion": "body_paragraph_count_in_range",
+          "passed": true,
+          "detail": "body has 5 paragraphs (want 3-7)"
+        },
+        {
+          "assertion": "body_has_exactly_one_cta",
+          "passed": true,
+          "detail": "1 CTA matches (want exactly 1)"
+        },
+        {
+          "assertion": "no_banned_tropes",
+          "passed": true,
+          "detail": "no tropes"
+        },
+        {
+          "assertion": "body_addresses_contact_by_name",
+          "passed": true,
+          "detail": "body addresses 'Captain'"
+        }
+      ]
+    },
+    {
+      "company": "Summit Higher Ed",
+      "subject": "Summit Higher Ed \u2014 re: TIAA disclosed breach affecting affiliat",
+      "passed": false,
+      "results": [
+        {
+          "assertion": "subject_under_60_chars",
+          "passed": false,
+          "detail": "subject is 63 chars (limit 60)"
+        },
+        {
+          "assertion": "subject_mentions_company_or_signal",
+          "passed": true,
+          "detail": "subject mentions company"
+        },
+        {
+          "assertion": "body_anchors_on_real_signal",
+          "passed": true,
+          "detail": "body references anchor keyword 'TIAA'"
+        },
+        {
+          "assertion": "body_paragraph_count_in_range",
+          "passed": true,
+          "detail": "body has 5 paragraphs (want 3-7)"
+        },
+        {
+          "assertion": "body_has_exactly_one_cta",
+          "passed": true,
+          "detail": "1 CTA matches (want exactly 1)"
+        },
+        {
+          "assertion": "no_banned_tropes",
+          "passed": true,
+          "detail": "no tropes"
+        },
+        {
+          "assertion": "body_addresses_contact_by_name",
+          "passed": true,
+          "detail": "body addresses 'Dr.'"
+        }
+      ]
+    },
+    {
+      "company": "Voyager Hospitality",
+      "subject": "Voyager Hospitality \u2014 re: Class-action lawsuit filed over loyalty ",
+      "passed": false,
+      "results": [
+        {
+          "assertion": "subject_under_60_chars",
+          "passed": false,
+          "detail": "subject is 66 chars (limit 60)"
+        },
+        {
+          "assertion": "subject_mentions_company_or_signal",
+          "passed": true,
+          "detail": "subject mentions company"
+        },
+        {
+          "assertion": "body_anchors_on_real_signal",
+          "passed": true,
+          "detail": "body references anchor keyword 'lawsuit'"
+        },
+        {
+          "assertion": "body_paragraph_count_in_range",
+          "passed": true,
+          "detail": "body has 5 paragraphs (want 3-7)"
+        },
+        {
+          "assertion": "body_has_exactly_one_cta",
+          "passed": true,
+          "detail": "1 CTA matches (want exactly 1)"
+        },
+        {
+          "assertion": "no_banned_tropes",
+          "passed": true,
+          "detail": "no tropes"
+        },
+        {
+          "assertion": "body_addresses_contact_by_name",
+          "passed": true,
+          "detail": "body addresses 'Maxwell'"
+        }
+      ]
+    },
+    {
+      "company": "Crestline Realty",
+      "subject": "Crestline Realty \u2014 re: Acquired prop-tech competitor with 200+ ",
+      "passed": false,
+      "results": [
+        {
+          "assertion": "subject_under_60_chars",
+          "passed": false,
+          "detail": "subject is 63 chars (limit 60)"
+        },
+        {
+          "assertion": "subject_mentions_company_or_signal",
+          "passed": true,
+          "detail": "subject mentions company"
+        },
+        {
+          "assertion": "body_anchors_on_real_signal",
+          "passed": true,
+          "detail": "body references anchor keyword 'acquired'"
+        },
+        {
+          "assertion": "body_paragraph_count_in_range",
+          "passed": true,
+          "detail": "body has 5 paragraphs (want 3-7)"
+        },
+        {
+          "assertion": "body_has_exactly_one_cta",
+          "passed": true,
+          "detail": "1 CTA matches (want exactly 1)"
+        },
+        {
+          "assertion": "no_banned_tropes",
+          "passed": true,
+          "detail": "no tropes"
+        },
+        {
+          "assertion": "body_addresses_contact_by_name",
+          "passed": true,
+          "detail": "body addresses 'Yuki'"
+        }
+      ]
+    }
+  ]
+}

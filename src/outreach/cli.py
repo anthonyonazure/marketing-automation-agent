@@ -85,6 +85,22 @@ async def _run(targets_path: str, tone: str | None, sender: str | None, save_log
 
 
 @app.command()
+def evals(
+    targets: str = typer.Option("evals/targets-eval.yaml", "--targets", "-t"),
+) -> None:
+    """Run the eval harness — score generated drafts against deterministic
+    quality assertions. With ANTHROPIC_API_KEY set, evaluates the real model;
+    without, evaluates the stub fallback as a baseline."""
+    from evals.run import main as run_eval
+
+    report = asyncio.run(run_eval(Path(targets)))
+    if report["fail_count"]:
+        console.print(f"\n[red]{report['fail_count']} targets failed assertions.[/]")
+        for name, n in sorted(report["failures_by_assertion"].items(), key=lambda x: -x[1]):
+            console.print(f"  · `{name}`: {n} failure(s)")
+
+
+@app.command()
 def version() -> None:
     """Print agent version."""
     from outreach import __version__

@@ -86,13 +86,19 @@ Output ONLY the JSON."""
 
 def _stub_draft(target: dict, enrichment: dict) -> dict:
     sig = (target.get("public_signals") or ["recent activity"])[0]
+    # Subject: company prefix + short signal anchor, capped at 60 chars total.
+    company = target["company"]
+    budget = max(0, 60 - len(company) - len(" — "))
+    sig_for_subject = sig[:budget].rstrip(" .,—-")
+    subject = f"{company} — {sig_for_subject}"[:60]
+    first_name = target["contact_name"].split()[0]
     return {
-        "subject": f"{target['company']} — re: {sig[:40]}",
+        "subject": subject,
         "body": (
-            f"{target['contact_name']},\n\n"
+            f"{first_name},\n\n"
             f"Saw the note about {sig}. The pattern we keep seeing in {target['industry']} "
-            f"companies hitting that wall is {target.get('pain_hypothesis', 'capacity stretched thin')}.\n\n"
-            f"We work with three other {target['industry']} teams in similar shape; the common "
+            f"shops hitting that wall is {target.get('pain_hypothesis', 'capacity stretched thin')}.\n\n"
+            f"We work with three other {target['industry']} teams in similar shape. The common "
             f"failure mode is the security ops loop closing later than the engineering loop, so "
             f"by the time something is detected the code is already two sprints downstream.\n\n"
             f"Open to a 30 minute call this or next week to compare notes? "

@@ -1,0 +1,205 @@
+# 20 synthetic targets covering varied industries + anchor patterns.
+# This is the eval set, NOT the demo set (targets/sample.yaml).
+# Each target's `expected_anchor_keywords` are used by the assertion harness
+# to verify the draft references the intended signal.
+
+targets:
+  - company: Halberd Health
+    domain: halberdhealth.example.com
+    contact_name: Dana Reyes
+    contact_email: ciso@halberdhealth.example.com
+    contact_role: CISO
+    industry: healthtech
+    public_signals: ["Series B announced 6 weeks ago ($42M)"]
+    expected_anchor_keywords: ["Series B", "$42M", "funding"]
+    pain_hypothesis: scaling SOC capacity faster than they can hire
+
+  - company: Northwind Payments
+    domain: northwind-pay.example.com
+    contact_name: Marcus Wei
+    contact_email: ciso@northwind-pay.example.com
+    contact_role: VP Security
+    industry: fintech
+    public_signals: ["PCI 4.0 deadline March 2026"]
+    expected_anchor_keywords: ["PCI", "4.0", "deadline"]
+    pain_hypothesis: PCI 4.0 readiness behind schedule
+
+  - company: Atlas Defense Robotics
+    domain: atlas-def.example.com
+    contact_name: Linnea Ott
+    contact_email: security@atlas-def.example.com
+    contact_role: Director of Information Security
+    industry: defense
+    public_signals: ["DoD contract awarded last month — CMMC L2 required"]
+    expected_anchor_keywords: ["DoD", "CMMC", "contract"]
+    pain_hypothesis: CMMC L2 with a one-person security team
+
+  - company: Brightpath Insurance
+    domain: brightpath-ins.example.com
+    contact_name: Priya Naidu
+    contact_email: cio@brightpath-ins.example.com
+    contact_role: CIO
+    industry: insurance
+    public_signals: ["Posted RFP for managed XDR last week"]
+    expected_anchor_keywords: ["RFP", "XDR"]
+    pain_hypothesis: in active vendor evaluation for managed XDR
+
+  - company: Sentry Manufacturing
+    domain: sentrymfg.example.com
+    contact_name: Felix Aaronson
+    contact_email: it.director@sentrymfg.example.com
+    contact_role: Director of IT
+    industry: manufacturing
+    public_signals: ["Quoted in industry article about OT/IT convergence challenges"]
+    expected_anchor_keywords: ["OT/IT", "convergence", "OT"]
+    pain_hypothesis: OT segmentation without centralized monitoring
+
+  - company: Riverstone Capital
+    domain: riverstone-cap.example.com
+    contact_name: Janelle Park
+    contact_email: ciso@riverstone-cap.example.com
+    contact_role: CISO
+    industry: financial_services
+    public_signals: ["SEC cyber disclosure rule compliance deadline approaching"]
+    expected_anchor_keywords: ["SEC", "disclosure", "cyber"]
+    pain_hypothesis: SEC 4-day cyber disclosure rule readiness
+
+  - company: Cascade Genomics
+    domain: cascade-genomics.example.com
+    contact_name: Emil Brandt
+    contact_email: cto@cascade-genomics.example.com
+    contact_role: CTO
+    industry: biotech
+    public_signals: ["Announced FDA submission for novel gene therapy"]
+    expected_anchor_keywords: ["FDA", "gene therapy", "submission"]
+    pain_hypothesis: GxP compliance for clinical trial data
+
+  - company: Quantum Logistics
+    domain: quantum-log.example.com
+    contact_name: Riya Kapoor
+    contact_email: vp.it@quantum-log.example.com
+    contact_role: VP IT
+    industry: logistics
+    public_signals: ["Three port-related ransomware incidents in their sector last quarter"]
+    expected_anchor_keywords: ["ransomware", "port"]
+    pain_hypothesis: maritime ransomware risk
+
+  - company: Pinnacle Education
+    domain: pinnacle-edu.example.com
+    contact_name: Dr. Kwame Asante
+    contact_email: ciso@pinnacle-edu.example.com
+    contact_role: CISO
+    industry: edtech
+    public_signals: ["FERPA modernization rule effective January 2026"]
+    expected_anchor_keywords: ["FERPA", "modernization"]
+    pain_hypothesis: FERPA + state student data laws stack
+
+  - company: Helix Energy
+    domain: helix-energy.example.com
+    contact_name: Bjorn Larsson
+    contact_email: ciso@helix-energy.example.com
+    contact_role: CISO
+    industry: energy
+    public_signals: ["TSA pipeline cybersecurity directive renewed for 2026"]
+    expected_anchor_keywords: ["TSA", "pipeline", "directive"]
+    pain_hypothesis: TSA SD compliance with OT scope
+
+  - company: Lighthouse Telehealth
+    domain: lighthouse-tele.example.com
+    contact_name: Dr. Akira Tanaka
+    contact_email: ciso@lighthouse-tele.example.com
+    contact_role: CISO
+    industry: telehealth
+    public_signals: ["Acquired three regional clinic networks in 2025"]
+    expected_anchor_keywords: ["acquired", "clinic networks"]
+    pain_hypothesis: post-acquisition HIPAA harmonization
+
+  - company: Veridian Aerospace
+    domain: veridian-aero.example.com
+    contact_name: Captain Nia Okwu
+    contact_email: cio@veridian-aero.example.com
+    contact_role: CIO
+    industry: aerospace
+    public_signals: ["NIST 800-171 compliance certified last month"]
+    expected_anchor_keywords: ["NIST", "800-171"]
+    pain_hypothesis: maintaining 800-171 controls year-round
+
+  - company: Beacon Casino Group
+    domain: beaconcasino.example.com
+    contact_name: Vincent Romano
+    contact_email: ciso@beaconcasino.example.com
+    contact_role: CISO
+    industry: gaming
+    public_signals: ["Hit by ALPHV ransomware variant 8 months ago"]
+    expected_anchor_keywords: ["ALPHV", "ransomware"]
+    pain_hypothesis: post-incident security maturity uplift
+
+  - company: Mosaic Retail Holdings
+    domain: mosaicretail.example.com
+    contact_name: Daria Ivanova
+    contact_email: cio@mosaicretail.example.com
+    contact_role: CIO
+    industry: retail
+    public_signals: ["PCI DSS 4.0 attestation deadline this quarter"]
+    expected_anchor_keywords: ["PCI DSS", "4.0", "attestation"]
+    pain_hypothesis: PCI DSS 4.0 attestation gap
+
+  - company: Solstice Pharma
+    domain: solstice-pharma.example.com
+    contact_name: Dr. Helena Voss
+    contact_email: cio@solstice-pharma.example.com
+    contact_role: CIO
+    industry: pharma
+    public_signals: ["FDA 21 CFR Part 11 audit findings published"]
+    expected_anchor_keywords: ["21 CFR", "Part 11", "FDA"]
+    pain_hypothesis: 21 CFR Part 11 finding remediation
+
+  - company: Ironclad Mortgage
+    domain: ironclad-mortgage.example.com
+    contact_name: Theresa Bowman
+    contact_email: ciso@ironclad-mortgage.example.com
+    contact_role: CISO
+    industry: lending
+    public_signals: ["FFIEC examination scheduled Q2"]
+    expected_anchor_keywords: ["FFIEC", "examination"]
+    pain_hypothesis: FFIEC IT examination prep
+
+  - company: Polaris Maritime
+    domain: polaris-maritime.example.com
+    contact_name: Captain Rohan Pillay
+    contact_email: it.director@polaris-maritime.example.com
+    contact_role: IT Director
+    industry: shipping
+    public_signals: ["IMO 2026 cyber risk management standard taking effect"]
+    expected_anchor_keywords: ["IMO", "cyber risk"]
+    pain_hypothesis: IMO cyber risk standard implementation
+
+  - company: Summit Higher Ed
+    domain: summit-univ.example.com
+    contact_name: Dr. Patricia Nguyen
+    contact_email: ciso@summit-univ.example.com
+    contact_role: CISO
+    industry: higher_education
+    public_signals: ["TIAA disclosed breach affecting affiliated universities"]
+    expected_anchor_keywords: ["TIAA", "breach"]
+    pain_hypothesis: incident response readiness
+
+  - company: Voyager Hospitality
+    domain: voyager-hotels.example.com
+    contact_name: Maxwell Dunn
+    contact_email: cio@voyager-hotels.example.com
+    contact_role: CIO
+    industry: hospitality
+    public_signals: ["Class-action lawsuit filed over loyalty program data"]
+    expected_anchor_keywords: ["lawsuit", "loyalty", "data"]
+    pain_hypothesis: customer data class-action defense posture
+
+  - company: Crestline Realty
+    domain: crestline-realty.example.com
+    contact_name: Yuki Nakamura
+    contact_email: cio@crestline-realty.example.com
+    contact_role: CIO
+    industry: real_estate
+    public_signals: ["Acquired prop-tech competitor with 200+ engineering team"]
+    expected_anchor_keywords: ["acquired", "prop-tech"]
+    pain_hypothesis: post-acquisition tech stack security harmonization

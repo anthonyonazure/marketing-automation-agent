@@ -20,7 +20,7 @@ async def test_stub_draft_anchors_on_signal_when_no_api_key():
     enrichment = {"page_title": None, "first_paragraphs": [], "fetch_ok": False}
     draft = await write_draft(target, enrichment, tone="peer-cynical")
     assert "Halberd Health" in draft["subject"]
-    assert "Dana Reyes" in draft["body"]
+    assert "Dana" in draft["body"]  # first name only — full name reads templated
     assert "Series B" in draft["body"]
     assert draft["body"].count("call") <= 2  # one CTA-ish reference
     assert "synergy" not in draft["body"].lower()
