@@ -1,5 +1,10 @@
 # marketing-automation-agent
 
+[![tests](https://github.com/anthonyonazure/marketing-automation-agent/actions/workflows/tests.yml/badge.svg)](https://github.com/anthonyonazure/marketing-automation-agent/actions/workflows/tests.yml)
+[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/)
+[![LangGraph](https://img.shields.io/badge/orchestrator-LangGraph-orange.svg)](https://github.com/langchain-ai/langgraph)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
 LangGraph cold-outreach agent. Takes a list of target accounts, enriches each one (homepage scrape + the public signals you already gathered), drafts a personalized email anchored on a specific signal, runs the draft through a brand-voice review pass, and lands the result as a **draft** in your Outlook inbox for human approval.
 
 It never sends autonomously. The agent's job ends at "this is ready for you to review and click Send."
