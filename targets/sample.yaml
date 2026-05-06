@@ -1,0 +1,67 @@
+# Sample target list for the demo. Each entry is one company; the agent will
+# create one personalized draft email per entry.
+#
+# In production you'd pipe this in from HubSpot, Apollo, your sales engineer
+# spreadsheet, or wherever your target lists live. Schema is intentionally
+# minimal so any source can be normalized to it in <20 lines.
+
+targets:
+  - company: Halberd Health
+    domain: halberdhealth.example.com
+    contact_name: Dana Reyes
+    contact_email: ciso@halberdhealth.example.com
+    contact_role: CISO
+    industry: healthtech
+    public_signals:
+      - "Series B announced 6 weeks ago ($42M)"
+      - "3 open security engineering roles posted in the last 30 days"
+      - "Public breach disclosure 14 months ago — credentials in S3"
+    pain_hypothesis: scaling SOC capacity faster than they can hire
+
+  - company: Northwind Payments
+    domain: northwind-pay.example.com
+    contact_name: Marcus Wei
+    contact_email: ciso@northwind-pay.example.com
+    contact_role: VP Security
+    industry: fintech
+    public_signals:
+      - "PCI 4.0 deadline March 2026"
+      - "Recent acquisition (Q3 2025) doubled their attack surface"
+      - "Hiring a vCISO consultant per LinkedIn job post"
+    pain_hypothesis: PCI 4.0 readiness behind schedule, no internal vCISO
+
+  - company: Atlas Defense Robotics
+    domain: atlas-def.example.com
+    contact_name: Linnea Ott
+    contact_email: security@atlas-def.example.com
+    contact_role: Director of Information Security
+    industry: defense
+    public_signals:
+      - "DoD contract awarded last month — CMMC L2 required"
+      - "No security blog or thought-leadership content"
+      - "LinkedIn shows 1 security engineer for 240 employees"
+    pain_hypothesis: CMMC L2 with a one-person security team
+
+  - company: Brightpath Insurance
+    domain: brightpath-ins.example.com
+    contact_name: Priya Naidu
+    contact_email: cio@brightpath-ins.example.com
+    contact_role: CIO
+    industry: insurance
+    public_signals:
+      - "Migrating off legacy mainframe to Azure"
+      - "Posted RFP for managed XDR last week"
+      - "Recent NAIC cybersecurity guidance applies to them"
+    pain_hypothesis: in active vendor evaluation for managed XDR
+
+  - company: Sentry Manufacturing
+    domain: sentrymfg.example.com
+    contact_name: Felix Aaronson
+    contact_email: it.director@sentrymfg.example.com
+    contact_role: Director of IT
+    industry: manufacturing
+    public_signals:
+      - "Quoted in industry article about OT/IT convergence challenges"
+      - "Three plants, no centralized SIEM mentioned in their tech stack"
+      - "Cyberattack on a competitor last month (public)"
+    pain_hypothesis: OT segmentation without centralized monitoring

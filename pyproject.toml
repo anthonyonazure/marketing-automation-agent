@@ -1,0 +1,44 @@
+[project]
+name = "marketing-automation-agent"
+version = "0.1.0"
+description = "LangGraph cold-outreach agent. Enriches B2B targets, drafts personalized outreach with brand voice checks, lands as drafts in your M365 inbox for human review."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+dependencies = [
+    "b2b-agent-toolkit",
+    "langgraph>=0.2.40",
+    "anthropic>=0.39",
+    "httpx>=0.27",
+    "beautifulsoup4>=4.12",
+    "pyyaml>=6.0",
+    "typer>=0.12",
+    "rich>=13.7",
+    "structlog>=24.1",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "respx>=0.21",
+    "ruff>=0.3",
+]
+
+[project.scripts]
+outreach = "outreach.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/outreach"]
+
+[tool.uv.sources]
+b2b-agent-toolkit = { path = "../b2b-agent-toolkit", editable = true }
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
