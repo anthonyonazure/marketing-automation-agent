@@ -11,7 +11,7 @@ It never sends autonomously. The agent's job ends at "this is ready for you to r
 
 ### Real run against a real Microsoft 365 mailbox
 
-5 personalized drafts created in `anthony@tilmsp.com`'s Outlook Drafts folder via Microsoft Graph, one per target — each anchored on a specific public signal (Series B, PCI 4.0 deadline, DoD contract win, etc.). Verified by reading back the Drafts folder via Graph immediately after the run:
+5 personalized drafts created in a real M365 mailbox's Outlook Drafts folder via Microsoft Graph, one per target — each anchored on a specific public signal (Series B, PCI 4.0 deadline, DoD contract win, etc.). Verified by reading back the Drafts folder via Graph immediately after the run:
 
 ![Live readback of 5 drafts in the Outlook Drafts folder](docs/media/outlook-readback.png)
 
