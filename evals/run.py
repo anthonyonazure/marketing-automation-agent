@@ -21,14 +21,14 @@ import json
 import os
 import uuid
 from collections import Counter
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
+from typing import Any
 
 import yaml
 
-from evals.assertions import ALL_ASSERTIONS, evaluate_draft
+from evals.assertions import evaluate_draft
 from outreach.drafting import write_draft
-from outreach.enrichment import enrich_target
 
 EVAL_DIR = Path(__file__).resolve().parent
 DEFAULT_TARGETS = EVAL_DIR / "targets-eval.yaml"
@@ -41,14 +41,18 @@ async def run_eval(targets_path: Path, *, tone: str = "peer-cynical") -> dict:
     async def _one(target: dict) -> dict:
         # Skip the network call entirely in eval — eval is about draft quality,
         # not enrichment, and example.com domains never resolve anyway.
-        enrichment = {"page_title": None, "first_paragraphs": [], "fetch_ok": False}
+        enrichment: dict[str, Any] = {
+            "page_title": None,
+            "first_paragraphs": [],
+            "fetch_ok": False,
+        }
         draft = await write_draft(target, enrichment, tone=tone)
         return evaluate_draft(draft, target)
 
     scored = await asyncio.gather(*[_one(t) for t in targets])
 
     pass_count = sum(1 for s in scored if s["passed"])
-    failures_by_assertion = Counter()
+    failures_by_assertion: Counter[str] = Counter()
     for s in scored:
         for r in s["results"]:
             if not r["passed"]:
@@ -56,12 +60,14 @@ async def run_eval(targets_path: Path, *, tone: str = "peer-cynical") -> dict:
 
     return {
         "run_id": uuid.uuid4().hex[:10],
-        "ran_at": datetime.now(timezone.utc).isoformat(),
+        "ran_at": datetime.now(UTC).isoformat(),
         "target_count": len(targets),
         "pass_count": pass_count,
         "fail_count": len(targets) - pass_count,
         "pass_rate_pct": round(pass_count / max(len(targets), 1) * 100, 1),
-        "model": "stub" if not os.environ.get("ANTHROPIC_API_KEY") else os.environ.get("OUTREACH_MODEL", "claude-sonnet-4-6"),
+        "model": "stub"
+        if not os.environ.get("ANTHROPIC_API_KEY")
+        else os.environ.get("OUTREACH_MODEL", "claude-sonnet-4-6"),
         "failures_by_assertion": dict(failures_by_assertion),
         "per_target": scored,
     }
@@ -92,7 +98,13 @@ def write_reports(report: dict) -> tuple[Path, Path]:
     if not report["failures_by_assertion"]:
         lines.append("| _no failures_ | 0 |")
 
-    lines += ["", "## Per-target detail", "", "| Company | Subject | Passed |", "|---|---|---|"]
+    lines += [
+        "",
+        "## Per-target detail",
+        "",
+        "| Company | Subject | Passed |",
+        "|---|---|---|",
+    ]
     for s in report["per_target"]:
         mark = "✓" if s["passed"] else "✗"
         subj = (s["subject"] or "")[:60].replace("|", "\\|")
@@ -105,7 +117,9 @@ def write_reports(report: dict) -> tuple[Path, Path]:
 async def main(targets_path: Path | None = None) -> dict:
     report = await run_eval(targets_path or DEFAULT_TARGETS)
     json_path, md_path = write_reports(report)
-    print(f"Pass rate: {report['pass_rate_pct']}%  ({report['pass_count']}/{report['target_count']})")
+    print(
+        f"Pass rate: {report['pass_rate_pct']}%  ({report['pass_count']}/{report['target_count']})"
+    )
     print(f"Reports:  {md_path}  +  {json_path}")
     return report
 

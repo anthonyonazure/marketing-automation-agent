@@ -8,12 +8,14 @@ from __future__ import annotations
 
 import asyncio
 import os
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+import httpx
 import structlog
 import yaml
+from azure.core.exceptions import AzureError
 from b2b_toolkit import get_adapters
 
 from outreach.drafting import (
@@ -26,6 +28,7 @@ from outreach.state import OutreachState
 
 log = structlog.get_logger()
 
+
 def _drafts_dir() -> Path:
     p = Path(os.environ.get("OUTREACH_DRAFTS_DIR", "drafts"))
     p.mkdir(parents=True, exist_ok=True)
@@ -33,7 +36,7 @@ def _drafts_dir() -> Path:
 
 
 def _event(kind: str, **detail: Any) -> dict[str, Any]:
-    return {"at": datetime.now(timezone.utc).isoformat(), "kind": kind, **detail}
+    return {"at": datetime.now(UTC).isoformat(), "kind": kind, **detail}
 
 
 async def load_targets(state: OutreachState) -> dict[str, Any]:
@@ -41,7 +44,10 @@ async def load_targets(state: OutreachState) -> dict[str, Any]:
     data = yaml.safe_load(path.read_text())
     targets = data["targets"]
     log.info("outreach.targets.loaded", count=len(targets), path=str(path))
-    return {"targets": targets, "events": [_event("targets_loaded", count=len(targets))]}
+    return {
+        "targets": targets,
+        "events": [_event("targets_loaded", count=len(targets))],
+    }
 
 
 async def _per_target(target: dict, tone: str, sender_upn: str) -> dict[str, Any]:
@@ -65,7 +71,11 @@ async def _per_target(target: dict, tone: str, sender_upn: str) -> dict[str, Any
     else:
         adapters = get_adapters()
         try:
-            html = "<p>" + draft["body"].replace("\n\n", "</p><p>").replace("\n", "<br>") + "</p>"
+            html = (
+                "<p>"
+                + draft["body"].replace("\n\n", "</p><p>").replace("\n", "<br>")
+                + "</p>"
+            )
             d = await adapters.m365_mailer.create_draft(
                 sender_upn=sender_upn,
                 to=[target["contact_email"]],
@@ -79,7 +89,10 @@ async def _per_target(target: dict, tone: str, sender_upn: str) -> dict[str, Any
                 "subject": d.subject,
                 "web_link": d.web_link,
             }
-        except Exception as e:
+        # Delivery is best-effort: a Graph or auth failure is recorded against
+        # the company and the run continues. Anything that is not a transport or
+        # Azure credential failure is a real bug and still propagates.
+        except (httpx.HTTPError, AzureError) as e:
             delivery = {"company": company, "error": str(e)[:300]}
 
     # Also persist to disk for audit / inspection
@@ -89,7 +102,10 @@ async def _per_target(target: dict, tone: str, sender_upn: str) -> dict[str, Any
     )
 
     return {
-        "enrichment": {"company": company, **{k: v for k, v in enrichment.items() if k != "company"}},
+        "enrichment": {
+            "company": company,
+            **{k: v for k, v in enrichment.items() if k != "company"},
+        },
         "draft": {"company": company, **draft},
         "review": {"company": company, **review},
         "delivery": delivery,
@@ -111,15 +127,22 @@ async def process_targets(state: OutreachState) -> dict[str, Any]:
     delivered = sum(1 for d in delivery if d.get("draft_id"))
     skipped = sum(1 for d in delivery if d.get("skipped"))
     errored = sum(1 for d in delivery if d.get("error"))
-    log.info("outreach.batch.done", delivered=delivered, skipped=skipped, errored=errored)
+    log.info(
+        "outreach.batch.done", delivered=delivered, skipped=skipped, errored=errored
+    )
 
     return {
         "enrichments": enrichments,
         "drafts": drafts,
         "reviews": reviews,
         "delivery": delivery,
-        "events": [_event(
-            "outreach_batch",
-            delivered=delivered, skipped=skipped, errored=errored, total=len(targets),
-        )],
+        "events": [
+            _event(
+                "outreach_batch",
+                delivered=delivered,
+                skipped=skipped,
+                errored=errored,
+                total=len(targets),
+            )
+        ],
     }
