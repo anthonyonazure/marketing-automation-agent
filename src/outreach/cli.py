@@ -26,16 +26,22 @@ log = structlog.get_logger()
 
 @app.command()
 def run(
-    targets: str = typer.Option("targets/sample.yaml", "--targets", "-t", help="YAML file with target list"),
+    targets: str = typer.Option(
+        "targets/sample.yaml", "--targets", "-t", help="YAML file with target list"
+    ),
     tone: str = typer.Option(None, "--tone", help="Override OUTREACH_TONE env"),
-    sender: str = typer.Option(None, "--sender", help="Override OUTREACH_SENDER_UPN env"),
+    sender: str = typer.Option(
+        None, "--sender", help="Override OUTREACH_SENDER_UPN env"
+    ),
     save_log: bool = typer.Option(True, help="Persist event log to out/"),
 ) -> None:
     """Generate personalized outreach drafts for a target list."""
     asyncio.run(_run(targets, tone, sender, save_log))
 
 
-async def _run(targets_path: str, tone: str | None, sender: str | None, save_log: bool) -> None:
+async def _run(
+    targets_path: str, tone: str | None, sender: str | None, save_log: bool
+) -> None:
     run_id = uuid.uuid4().hex[:10]
     initial: OutreachState = {
         "run_id": run_id,
@@ -69,7 +75,9 @@ async def _run(targets_path: str, tone: str | None, sender: str | None, save_log
         co = d["company"]
         v = reviews_by_co.get(co, {}).get("verdict", "?")
         delv = deliv_by_co.get(co, {})
-        delv_pill = "DRAFT" if delv.get("draft_id") else ("ERROR" if delv.get("error") else "—")
+        delv_pill = (
+            "DRAFT" if delv.get("draft_id") else ("ERROR" if delv.get("error") else "—")
+        )
         table.add_row(co, d.get("subject", ""), v, delv_pill)
     console.rule("[bold cyan]Result[/]")
     console.print(table)
@@ -96,7 +104,9 @@ def evals(
     report = asyncio.run(run_eval(Path(targets)))
     if report["fail_count"]:
         console.print(f"\n[red]{report['fail_count']} targets failed assertions.[/]")
-        for name, n in sorted(report["failures_by_assertion"].items(), key=lambda x: -x[1]):
+        for name, n in sorted(
+            report["failures_by_assertion"].items(), key=lambda x: -x[1]
+        ):
             console.print(f"  · `{name}`: {n} failure(s)")
 
 
@@ -104,6 +114,7 @@ def evals(
 def version() -> None:
     """Print agent version."""
     from outreach import __version__
+
     console.print(f"marketing-automation-agent {__version__}")
 
 

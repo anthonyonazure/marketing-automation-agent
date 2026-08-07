@@ -16,8 +16,23 @@ import json
 import os
 
 from anthropic import AsyncAnthropic
+from anthropic.types import Message, TextBlock
 
 MODEL = os.environ.get("OUTREACH_MODEL", "claude-sonnet-4-6")
+
+
+def _first_text(msg: Message) -> str:
+    """The prose of a response whose first block must be text.
+
+    ``Message.content`` is a union of block kinds (text, tool use, thinking,
+    ...) and only a text block carries prose. These prompts ask for JSON and
+    enable no tools, so anything else means the model did not answer the
+    question we asked.
+    """
+    block = msg.content[0]
+    if not isinstance(block, TextBlock):
+        raise TypeError(f"expected a text block from the model, got {block.type!r}")
+    return block.text.strip()
 
 
 _TONE_LINES = {
@@ -126,7 +141,8 @@ async def write_draft(target: dict, enrichment: dict, *, tone: str) -> dict:
         signals_block=signals_block or "- (none gathered)",
         pain=target.get("pain_hypothesis", "(unknown)"),
         page_title=enrichment.get("page_title") or "(no title scraped)",
-        page_snippets=" | ".join(enrichment.get("first_paragraphs", []))[:600] or "(none)",
+        page_snippets=" | ".join(enrichment.get("first_paragraphs", []))[:600]
+        or "(none)",
         tone_line=_TONE_LINES.get(tone, _TONE_LINES["peer-cynical"]),
     )
     client = AsyncAnthropic()
@@ -135,11 +151,10 @@ async def write_draft(target: dict, enrichment: dict, *, tone: str) -> dict:
         max_tokens=1200,
         messages=[{"role": "user", "content": prompt}],
     )
-    text = msg.content[0].text.strip()
+    text = _first_text(msg)
     if text.startswith("```"):
         text = text.split("```", 2)[1]
-        if text.startswith("json"):
-            text = text[4:]
+        text = text.removeprefix("json")
         text = text.rsplit("```", 1)[0].strip()
     return json.loads(text)
 
@@ -159,16 +174,17 @@ async def review_brand_voice(draft: dict, target: dict) -> dict:
         max_tokens=400,
         messages=[{"role": "user", "content": prompt}],
     )
-    text = msg.content[0].text.strip()
+    text = _first_text(msg)
     if text.startswith("```"):
         text = text.split("```", 2)[1]
-        if text.startswith("json"):
-            text = text[4:]
+        text = text.removeprefix("json")
         text = text.rsplit("```", 1)[0].strip()
     return json.loads(text)
 
 
-async def rewrite_draft(target: dict, enrichment: dict, original: dict, review: dict, *, tone: str) -> dict:
+async def rewrite_draft(
+    target: dict, enrichment: dict, original: dict, review: dict, *, tone: str
+) -> dict:
     """One-shot rewrite incorporating reviewer notes; same prompt + extra section."""
     if not os.environ.get("ANTHROPIC_API_KEY"):
         return original  # stub: nothing to rewrite

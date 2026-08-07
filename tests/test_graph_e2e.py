@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 
 import pytest
@@ -62,6 +61,16 @@ async def test_skips_delivery_when_no_sender_upn(tmp_path, monkeypatch):
     monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
     graph = build_graph().compile()
     final = await graph.ainvoke(
-        {"run_id": "x", "targets_path": str(TARGETS), "tone": "neutral", "sender_upn": "", "events": [], "errors": []}
+        {
+            "run_id": "x",
+            "targets_path": str(TARGETS),
+            "tone": "neutral",
+            "sender_upn": "",
+            "events": [],
+            "errors": [],
+        }
     )
-    assert all(d.get("skipped") and d.get("reason") == "no_sender_upn" for d in final["delivery"])
+    assert all(
+        d.get("skipped") and d.get("reason") == "no_sender_upn"
+        for d in final["delivery"]
+    )

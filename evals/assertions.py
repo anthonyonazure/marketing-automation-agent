@@ -11,7 +11,7 @@ in front of an actual marketer."""
 from __future__ import annotations
 
 import re
-from typing import Callable
+from collections.abc import Callable
 
 # Brand voice tropes that fail the review pass. Add to this list as you
 # find new patterns in the wild.
@@ -51,6 +51,7 @@ CTA_PATTERNS = [
 
 
 # ---------- Assertions ----------
+
 
 def subject_under_60_chars(draft: dict, target: dict) -> tuple[bool, str]:
     n = len(draft.get("subject") or "")
