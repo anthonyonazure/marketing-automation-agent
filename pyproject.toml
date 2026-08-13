@@ -7,7 +7,7 @@ requires-python = ">=3.11"
 license = { text = "MIT" }
 
 dependencies = [
-    "b2b-agent-toolkit",
+    "b2b-agent-toolkit @ git+https://github.com/anthonyonazure/b2b-agent-toolkit@main",
     # Imported directly to catch Azure credential failures when delivering drafts.
     "azure-core>=1.30",
     "langgraph>=0.2.40",
